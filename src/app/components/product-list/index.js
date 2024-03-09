@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const products = [
@@ -25,15 +26,15 @@ export default function ProductList() {
 
   return (
     <ul>
-      {products.map((productItem) => ( // Changed ProductItem to productItem
-        <li
-          onClick={() => router.push(`/products/${productItem.id}`)}
-          key={productItem.id}
-        >
-          {productItem.name}
-        </li>
-      ))}
+      {products.map(
+        (
+          productItem // Changed ProductItem to productItem
+        ) => (
+          <Link href={`/products/${productItem.id}`}>
+            <li key={productItem.id}>{productItem.name}</li>
+          </Link>
+        )
+      )}
     </ul>
   );
 }
-
